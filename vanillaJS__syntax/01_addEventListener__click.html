@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener__click</title>
+    <style>
+        h1 {
+            color: rgb(14, 14, 14);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">This works!</h1>
+
+    <script>
+        const title = document.querySelector("#title");
+
+        const BASE_COLOR = "rgb(14, 14, 14)";
+        const OTHER_COLOR = "rgb(246, 22, 22)"
+
+        function handleClick() {
+            const currentColor = title.style.color;
+
+            if (currentColor === BASE_COLOR) {
+                title.style.color = OTHER_COLOR;
+            } else {
+                title.style.color = BASE_COLOR;
+            }
+        }
+
+        function init() {
+            title.style.color = BASE_COLOR;
+            title.addEventListener("click", handleClick);
+        }
+
+        init();
+
+    </script>
+</body>
+
+</html>

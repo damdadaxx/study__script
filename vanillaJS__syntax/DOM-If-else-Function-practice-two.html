@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(231, 231, 231);
+        }
+
+        h1 {
+            color: #7f8c8d;
+            transition: color .5s ease-in-out;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+
+        .clicked {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title" class="btn">This works!</h1>
+
+    <script>
+        const title = document.querySelector("#title");
+
+        const CLICKED_CLASS = "clicked";
+
+        function handleClick() {
+            // const currentClass = title.className;
+
+            const hasClass = title.classList.contains(CLICKED_CLASS);
+
+            // console.log(currentClass);
+            // currentClass가 CLICKED_CLASS와 같지 않으면 className을 준다.
+            // if (currentClass !== CLICKED_CLASS) {
+            if (!hasClass) {
+                // 위쪽 currentClass 에서 value를 가져와서 값을 세팅한다.
+                // title.className = CLICKED_CLASS;
+                title.classList.add(CLICKED_CLASS);
+            } else { // 값이 같으면
+                // title.className = "";
+                title.classList.remove(CLICKED_CLASS);
+            }
+        }
+
+        function init() {
+            title.addEventListener("click", handleClick);
+        }
+        init();
+
+
+    </script>
+</body>
+
+</html>

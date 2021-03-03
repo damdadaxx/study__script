@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(135, 175, 235);
+        }
+
+        h1 {}
+    </style>
+</head>
+
+<body>
+    <h1 id="title">This works!</h1>
+
+    <script>
+        const title = document.querySelector("#title");
+
+        // 컬러 값을 체크하는데 사용. h1의 컬러와 같은지 체크한 후, 그 다음에 다른 컬러라면 원래의 컬러로 바꿔 줄 것이다.
+        // "const" 는 대문자로 변수를 선언한다. 그냥 복사 붙여넣기 하고 싶지 않다.
+        const BASE_COLOR = "rgb(212, 204, 204)";
+        const OTHER_COLOR = "#2c3e50";
+
+        // 누군가가
+        function handleClick() {
+            // console.log(title.style.color);
+            const currentColor = title.style.color;
+            // console.log(currentColor);
+
+            // 만약 현재의 색깔이 기본색과 같다면
+            if (currentColor === BASE_COLOR) {
+                // title의 컬러를 OTHER_COLOR로 바꿔줄 거야
+                title.style.color = OTHER_COLOR;
+            } else { // currentColor === OTHER_COLOR (거짓)
+                title.style.color = BASE_COLOR;
+            }
+        }
+
+        // 어플리케이션을 초기화 한다.
+        function init() {
+            title.style.color = BASE_COLOR;
+            title.addEventListener("click", handleClick);
+        }
+        init();
+
+        // function handleOffline() {
+        //     console.log('bye bye');
+        // }
+        // function handleOnline() {
+        //     console.log('welcome back');
+        // }
+        // window.addEventListener("offline", handleOffline);
+        // window.addEventListener("online", handleOnline);
+
+    </script>
+</body>
+
+</html>

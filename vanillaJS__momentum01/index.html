@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="js-clock">
+        <h1>00:00</h1>
+    </div>
+    <form class="js-form form">
+        <input type="text" placeholder="What is your name?" />
+    </form>
+    <h4 class="js-greetings greetings"></h4>
+    <form class="js-toDoForm">
+        <input type="text" placeholder="Write a to do" />
+    </form>
+    <ul class="js-toDoList">
+        <!-- <li id="1"></li> -->
+    </ul>
+    <span class="js-weather"></span>
+    <script src="clock.js"></script>
+    <script src="gretting.js"></script>
+    <script src="todo.js"></script>
+    <script src="bg.js"></script>
+    <script src="weather.js"></script>
+
+    <!-- 
+        Part 1. 시계 만들기
+        1. init 함수 생성
+        2. querySelector 로 ".js-clock", "h1" 태그를 가져온다.
+        3. 현재 시간에서 시계를 불러온다.
+        4. clockTitle.innerText
+            innerText 는 객체 안에 텍스트를 넣는 것
+            여기서 사용할 문자열을 만든다.
+        5. 확인 하면 현재 시각이 출력된다.
+        6. 업데이트 되는 사항을 추가해 본다. -> seconds
+        7. 확인 해보면 새고로침 할 때마다 seconds의 숫자가 바뀐다.
+        8. 초기화 과정에서 먼저 시간을 얻고 그리고 나서 interval을 설정하자
+        9. 확인 결과 매 초마다 업데이트 되는 것을 볼 수 있다.
+        10. 10초 미만 일 때, 숫자 앞에 "0"을 넣어보자.(삼항연산자)
+            10보다 크다면 0을 포함한 문자열을 리턴할 것이다. 그렇지 않으면 초를 그대로 리턴할 것이다.
+            ${seconds < 10 ? `0${seconds}` : seconds}
+        11. hours와 minutes 도 동일하게 적용
+            `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+    -->
+
+    <!--
+        Part 2-1. Saving the User Name
+        1. 그 사람의 컴퓨터에 저장을 해보자.
+        2. <form> <input> 태그 생성
+        3. gretting.js 파일 생성
+        4. init 함수 생성
+        5. 2개의 플레이어 선택하기
+            첫 번째 플레이어 : .js-form
+            두 번째 플레이어 : input
+        6. local storage
+        7. loadName 함수를 만든다. 이 함수는 로컬 스토리지에서 정보를 가져온다.
+        8. USER_LS 변수를 만들고 currentUser를 할당한다.
+        9. 어떠한 정보를 주는지 if문으로 체크해 보자.
+            로컬 스토리지에 유저가 있을 때
+            로컬 스토리지에 유저가 없을 때
+            둘 다일 경우 form의 display none을 하자!
+        10. HTML과 CSS에서 .form h4.greetings h4.greetings .showing을 적용하자
+        11. 만약 현재 유저가 null이 아니라면, 이름에 색칠하자.
+            그 전에 greeting 변수에 .js-greetings을 가져온다.
+            paintGreeting 함수에는 text라는 인자를 가져올 것이고, Hello 뒤에 가져온 text 인자를 붙여서 출력할 것이다.
+        12. 만약 현재 유저가 로컬스토리지에 있다면, paintGreeting 함수를 로컬 스토리지에서 가져온 텍스트와 함께 부를 것이다. paintGreeting(currentUser)
+        13. greeting.classList.add(SHOWING_CN); 
+        14. 만약 텍스트를 색칠할거라면 form을 숨겨야 한다. 
+            form.classList.remove(SHOWING_CN);
+        15. 확인 해보면 아무런 변화가 없다. 현재 유저가 null이기 때문이다.
+    -->
+
+    <!-- 
+        Part 2-2. 유저를 저장하고 그 사람의 인풋을 얻어보자.
+        1. else 는 우리가 user는 가지고 있으면 동작 할 것이고,if는 우리가 user를 가지고 있지 않을 때 동작 할 것이다. 
+        2. askForName 라는 함수를 만들어 보자. 
+            이 함수는 if문에 넣어주자. 
+            만약 currentUser가 없으면 user의 이름을 요청할 것이다.
+            classList로 .showing을 추가하자. -> form.classList.add(SHOWING_CN);
+        3. 그 결과를 확인해 보면 "What is your name?"이 나온다. 이 것을 보여주는 것은 currentUser가 null이기 때문이다. 즉, 내 이름을 요청해야 한다는 것이다. 
+        4. "What is your name?"에 이름을 입력해 보자. 이름을 적고 enter를 누르면 form에 제출(submit)하게 된다. 
+            제출 후에 enter를 누르게 되면 웹사이트가 새로고침 되는데. 이것은 default에 의해서 네가 form을 제출하면 이것을 다른 곳에 제출하려고 한다. 
+        5. 이제 submit 후에 <form>을 없애야 한다. addEventListener을 사용하자.
+            이때, handleSubmit이라는 함수를 만들자. 이 함수는 내가 전에 만들어둔 event와 같이 실행될 것이다.
+        6. submit할 때 발생하는 새로고침과 같은 event의 preventDefault를 막자.
+            예를 들어, 기본적으로 내가 텍스틀를 <input>에 적고 enter를 누르게 되면 이게 사라지게 되어 있다. 왜냐하면 이게 기본 동작이기 때문이다. 하지만 내가 이 동작을 막으면 enter를 누르고 있지만 아무 일도 일어나지 않는다. 왜냐하면 event가 금지되었기 때문이다. 
+            이게 우리가 기본 동작을 막는데 필요한 1단계이다. 
+        7. 이제 parameter의 현재 value가 필요하다.
+            const currentValue = input.value; -> console.log()로 확인해 보면, <input> 창에 이름을 입력한 후 submit하면(enter) console창에 currentValue가 나온다.
+        8. value를 받아서 paintGreeting function을 다시 불러서 currentValue를 출력하자. (paintGreeting function은 form을 지우고 greeting을 보여주고 유저가 입력한 text를 넣기 때문이다)
+        9. 결과를 확인해 보면, 이름을 입력하면 "Hello 이름"가 출력된다.
+        10. 하지만 이 정보가 저장되지 않는다. 왜냐하면 현재까지는 단순히 이름을 불러오는 프로그램이 되어있기 때문이다.
+        11. 이제 저장하는 함수를 만들어보자.
+            saveName 이라는 function을 생성한다. 이 함수는 text(이름) 인자를 받을 것이다. 
+            받은 인자로 localStorage에다가 currentUser와 text(인자)를 저장한다.
+        12. 누군가 submit을 했을 때, paintGreeting 을 할 뿐만 아니라 이름(currentValue)도 저장할 것이다. -> handleSubmit에 saveName(currentValue);
+        13. 결과를 확인 해 보면 "lina"(이름)을 입력하면 Local Storage에도 저장되고 "Hello lina"도 출력된다. 또한, 새로고침을 해도 "lina"가 남아있다. 
+    -->
+
+    <!-- 
+        Part 3-1. Making a To Do List 
+        To do List는 이 전에 했었던 greetings를 만들었던 것과 비슷하다. 다른 점은 hiding과 showing을 가지지 않을 것이다. 그냥 to-do list이니까.
+        1. todo.js 새 파일 생성
+        2. greeting에 form.js-toDoForm 과 <input>생성
+            <form class="js-toDoForm">
+                <input type="text" placeholder="Write a to do" />
+            </form>
+        3. 리스트인 ul.js-toDoList 생성
+        4. JavaScript에서 .js-toDoForm , input , .js-toDoList 상수에 저장
+        5. function init() 생성 후 안에 loadToDos() 함수 호출.
+        6. 로컬 스토리지에서 온 정보를 load 해야 한다.
+            loadToDos() 함수에는 로컬 스토리지에서 TODOS_LS를 가져온다.
+            if문을 작성한다. 만약 toDos가 null이 아니라면, if(toDos !== null) {}
+            로컬 스토리지에서 할 일을 알면 어떠한 사항을 추가해줘야 하기 때문에 여기서 if문을 잠시 멈춘다.
+            // if-else 문을 사용하지 않는 이유 : if(toDos === null) {} else {} -> 만약 toDos가 null이랑 같으면(값이 없으면), 아무것도 하지 않을 거야. 왜냐하면 <form>은 항상 showing이기 때문이다. else문이 필요 없다.
+        7. init() 함수에 toDoForm에 addEventListener("submit", handleSubmit) 해준다.
+        8. handleSubmit 함수는 event를 가져오고, event.preventDefault() 해준다.
+            currentValue는 toDoInput의 value를 가져온다.
+        9. paintToDo() 함수를 생성하고, 이 함수는 파라미터 text를 받는다. 
+            이 함수를 handleSubmit()함수에서 실행 시키는데 인자 currentValue를 받는다.
+        10. 테스트를 해 보자. <input>에 text를 넣으면 console창에 정상적으로 출력된다.
+            function paintToDo(text) {
+                console.log(text);
+            }
+        11. 누군가 <input>에 text를 입력 후 엔터를 눌렀을 때, 생성한 후 삭제해 보자.
+            handleSubmit() 함수에 toDoInput.value = ""; 입력
+            테스트 결과 입력한 내용이 <input>에서 사라지고 console창에 출력된다.
+        12. To-Do 를 생성해보자.
+            paintToDo에서 할 것은 To-Do가 어떻게 생겼을지 알 수 있다.
+            HTML에서 <li id="1">lalala</li> 작성한 것 처럼 JavaScript에서 만들 것이다. 
+        13. paintToDo에 ul , button , span 을 만든다. 
+            이때 사용하는 document.createElement()는 뭔가를 생성할 때 사용한다.
+            const li = document.createElement("li");
+            const delBtn = document.createElement("button");
+            delBtn.innerText = "❌";
+            const span = document.createElement("span");
+        14. span에는 text를 넣어주고, li의 안에 span , delBtn을 각각 넣어준다.
+            span.innerText = text;
+            li.appendChild(delBtn);
+            li.appendChild(span);
+        15. 마지막으로 toDoList에 li를 넣고 작동해 보자!
+            toDoList.appendChild(li);
+        16. enter를 눌렀을 때, <li>를 생성하고, delete 버튼과 <span>을 생성해야 한다. 
+            <span>과 delete버튼 <li>안에 append하고, 마지막으로 <li>를 <ul>에다 append 하는 것이다.
+        17. 결과 엘리먼트를 생성했고, ul안에 넣고 싶은 것을 넣었다. 더이상 empty가 아니다. 
+    -->
+
+    <!-- 
+        Part 3-2. Making a To Do List 
+        1. 할 일 목록(to-do)을 저장
+            이 할 일 목록은 array가 되어야 한다. 왜냐하면 할 일 항목이 많아질 수 있기 때문이다. 해야할 일을 하나만 저장하는 것이 아니라 여러 개가 모인 목록으로 저장해야 한다. 
+            toDos를 비어있는 array로 만들자.
+            const toDos = [];
+        2. 해야 할 일이 생성됐을 때 그게 toDos array에 추가되도록 한다.
+            그 전에 toDoObj를 생성한다.
+            id: toDos.length + 1 -> 처음에 toDos arrya가 비어 있으므로 id 값은 1이다. 
+            const toDoObj = {
+            text: text,
+            id: toDos.length + 1,
+            };
+        3. push 를 사용해서 array안에 element 하나를 넣어줄 수 있다.
+            toDos.push(toDoObj);
+        * loadToDos() 에 toDos를 loadedToDos 로 변경하기
+        4. toDos 을 확인 해보면 빈 배열임을 알 수 있다.
+            ** 사진 첨부
+            <input> 에 hello를 입력하고 다시 console창을 확인 해보면, toDos에 하나가 들어가 있는 것을 볼 수 있다. 두 번째 것을 입력하면 배열이 추가되어 있다.
+            ** 사진 첨부
+        5. 조금 더 깔끔한 코드를 위해서 아래와 같이 정리해 준다.
+            li에게도 id를 할당 해준다. 그래야 나중에 해당 li를 지울 수 있기 때문이다.
+            const newId = toDos.length + 1;
+            li.id = newId;
+            const toDoObj = {
+            text: text,
+            id: newId,
+            };
+        6. 그리고 확인 해 보면, 리스트를 추가할 때마다 해당 li에 id가 추가 되는 것을 볼 수 있다.
+            ** 사진 첨부
+        7. 왜 to-do를 이런식으로 저장할까? 그 이유는 localStorage에도 to-do를 저장해둬야 하기 때문이다.
+        8. saveToDos() 함수를 생성한다. 이 saveToDos 는 toDos를 가져와서 로컬에 저장하는 일을 한다. 
+            localStorage.setItem(TODOS_LS, toDos); 한 후에 paintToDo() 함수에 saveToDos() 를 호출해 준다.
+            * push를 한 후 에 saveToDos를 호출하도록 해야한다. 만약 push전에 호출해버리면 saveToDos를 불러도 저장할 게 아무것도 없다. toDos가 비어있기 때문이다.
+        9. 결과를 확인 해보자. "study"를 입력한 후 local storage를 확인 해 보면 아래의 사진에서 보이는 것 처럼 toDos에 [object Object] 가 출력된다.
+            그 이유는 local storage에는 JavaScript의 data를 저장할 수 없다. 오직 string만 저장할 수 있다.
+            예를 들어서 Key 부분에 hello를 넣고 Value에 true를 넣은 다음 콘솔로 와서 local storage의 hello를 가져와보면 "true"이기는 하지만 이건 (따옴표가 붙은) 텍스트다. Boolean 타입이 아니다. JavaScript는 local storage에 있는 모든 데이터를 string으로 저장하려 한다. 그래서 object가 string이 되도록 만들어야 한다.
+            ** 사진 첨부
+        10. 이때, JSON.stringify를 사용하자.
+            JSON.stringify 는 JavaScript object를 string으로 바꿔준다.
+            localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+        11. 결과를 확인해 보면 string으로 바꿔서 저장된 것을 볼 수 있다.
+            ** 사진첨부
+        12. 이제 toDos를 저장하고 있는 것이다. 다음으로는 toDos를 불러오는 작업을 해보자. 
+            새로고침을 해도 local storage에 toDos가 남아 있다.
+            loadToDos() 함수 안에서 console.log(loadedToDos); 출력해보면 아래와 같은 결과가 출력된다. 즉, null이 아니라면 불러올 수 있는 것이다. 
+        13. 하지만 문제는 불러온 것이string이다. 그래서 JSON을 또 사용할 것이다.
+            loadToDos() 함수 안에 parsedToDos 변수를 생성하자.
+            그리고 JSON.parse를 해주기 전(loadedToDos)과 해준 후 (parsedToDos)를 각각 console.log 해서 확인해보자.
+            그 결과 첫 번째 줄은 local storage에서 불러온 모습이고, parse를 해주었더니 아래와 같이 object로 변환되었다.
+            ** 사진 첨부
+        14. 이제 parsedToDos를 화면에 paint(보여주기) 하자. local storage에서 불러온 것을 화면 상에 써주는 것이다.
+            * 지금은 toDos가 비어 있다는 것을 다시 한 번 명심하기!
+                const toDos = [];
+        15. 모든 to-do 항목들에 대해서 (parsedToDos의 안에 있는 것들) paintToDo function을 실행하자.
+        16. forEach()를 사용해보자. 
+            이 경우에는 괄호 안에서 바로 function을 만든다. 그러니까 지금 만들 이 함수를 parsedToDos에 있는 각각의 것들에 대해 실행해줄 것이므로 각각의 것들을 toDo라고 칭할것이다.
+            일단은 toDo의 text를 console.log 해보자.
+        17. 결과를 보면 parsedToDos에 들어있는 각각의 text들이 console.log된것을 볼 수 있다.
+            ** 사진첨부
+        18. 그리고 여기서는 각각에 대해서 paintToDo를 해줘야 한다.
+            parsedToDos.forEach(function (toDo) {
+            // console.log(toDo.text);
+            paintToDo(toDo.text);
+            });
+        19. 정리해보면 toDos를 가져온 뒤, 이 라인에서는 parse(가져온 것을 자바스크립트 object로 변환)해줄 것이고 각각에 대해서 paintToDo라는 function(paintToDo는 이 위에 정의해 두었던 것)이 실행된다. toDo.text에 대해 실행되는 것이다.
+    -->
+
+</body>
+
+</html>

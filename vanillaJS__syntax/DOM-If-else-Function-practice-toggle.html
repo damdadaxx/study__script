@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(231, 231, 231);
+        }
+
+        h1 {
+            color: #7f8c8d;
+            transition: color .5s ease-in-out;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+
+        .clicked {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title" class="btn">This works!</h1>
+
+    <script>
+        const title = document.querySelector("#title");
+
+        const CLICKED_CLASS = "clicked";
+
+        function handleClick() {
+            // class가 있는지 체크해서 있으면 add 아니면 remove를 해준다.
+            title.classList.toggle(CLICKED_CLASS);
+        }
+
+        function init() {
+            title.addEventListener("click", handleClick);
+        }
+        init();
+
+
+    </script>
+</body>
+
+</html>
