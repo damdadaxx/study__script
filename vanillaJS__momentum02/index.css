@@ -205,8 +205,8 @@ input {
 
 
 /* >= 1200px */
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     .bgImage {
         width: auto; height: 100vh;
     }
-}
+} */
