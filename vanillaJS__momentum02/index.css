@@ -1,0 +1,212 @@
+@charset "utf-8";
+
+/* reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-flex: 0 1 auto;
+}
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+legend,
+li,
+ol,
+p,
+select,
+table,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+input,
+textarea,
+select,
+button,
+a {
+    font-family: inherit;
+    font-size: 100%
+}
+input,
+textarea,
+button,
+select {
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    font-size: 16px;
+}
+button {
+    border: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+[tabindex="-1"]:focus {
+    outline: 0
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+p {
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+img, fieldset {
+    border: 0 none;
+}
+
+/* body */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; height: 100vh;
+    color: #273f40;
+    font-family: 'Raleway', sans-serif;
+    overflow: hidden;
+}
+
+.js-clock > h1 {
+    font-size: 10vw;
+    font-weight: 200;
+}
+
+input {
+    width: 220px;
+    height: 40px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #273f40;
+}
+
+.js-weather {
+    font-weight: 700;
+}
+
+.form,
+.greetings {
+    display: none;
+}
+
+.showing {
+    display: block;
+    font-size: 42px;
+    font-weight: 500;
+}
+
+.js-toDoList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 220px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.js-toDoList li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.js-toDoList li button {
+    background-color: transparent;
+}
+
+.js-toDoList li span {
+    margin-left: 10px;
+    font-weight: 500;
+    color: #273f40;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.bgImage {
+    position: absolute;
+    z-index: -1;
+    width: 100%; height:auto;
+    animation: fadeIn .5s linear;
+}
+
+
+/* >= 1200px */
+@media screen and (max-width: 1200px) {
+    .bgImage {
+        width: auto; height: 100vh;
+    }
+}
