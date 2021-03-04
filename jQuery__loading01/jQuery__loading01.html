@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .progress {
+            position: fixed;
+            z-index: 99999;
+            width: 100%;
+            height: 100%;
+            font-family: 'Nixie One', cursive;
+            /* font-family: 'Roboto Mono', monospace; */
+            background-color: #F3EEE8;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 55%;
+            left: 0;
+            right: 0;
+            width: 14px;
+            height: auto;
+            margin: auto;
+        }
+
+        .loader {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 250px;
+            height: 20px;
+            margin: auto;
+        }
+
+        .loader--dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            border: 1px solid white;
+            background-color: black;
+            animation-name: loader;
+            animation-timing-function: ease-in-out;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        .loader--dot:first-child {
+            background-color: #48506F;
+            animation-delay: 0.5s;
+        }
+
+        .loader--dot:nth-child(2) {
+            background-color: #5F3733;
+            animation-delay: 0.4s;
+        }
+
+        .loader--dot:nth-child(3) {
+            background-color: #F3C57E;
+            animation-delay: 0.3s;
+        }
+
+        .loader--dot:nth-child(4) {
+            background-color: #88B2C4;
+            animation-delay: 0.2s;
+        }
+
+        .loader--dot:nth-child(5) {
+            background-color: #FFD9D9;
+            animation-delay: 0.1s;
+        }
+
+        .loader--dot:nth-child(6) {
+            background-color: #F3EEE8;
+            animation-delay: 0s;
+        }
+
+        /* .loader--text {
+            position: absolute;
+            top: 200%;
+            left: 0;
+            right: 0;
+            width: 4rem;
+            margin: auto;
+        } */
+
+        /* .loader--text:after {
+            content: "Loading";
+            font-weight: bold;
+            animation-name: loading-text;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        } */
+
+        @keyframes loader {
+            15% {
+                transform: translateX(0);
+            }
+
+            45% {
+                transform: translateX(230px);
+            }
+
+            65% {
+                transform: translateX(230px);
+            }
+
+            95% {
+                transform: translateX(0);
+            }
+        }
+
+        /* @keyframes loading-text {
+            0% {
+                content: "Loading";
+            }
+
+            25% {
+                content: "Loading.";
+            }
+
+            50% {
+                content: "Loading..";
+            }
+
+            75% {
+                content: "Loading...";
+            }
+        } */
+
+        .section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: pink;
+        }
+
+        .section h1 {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #000;
+            opacity: 0;
+        }
+
+        .section .img {
+            width: 10vw;
+            height: 10vh;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='progress'>
+        <div class="progress-text">100%</div>
+        <div class='loader'>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <!-- <div class='loader--text'></div> -->
+        </div>
+    </div>
+
+    <section class="section">
+        <h1>Hello world!</h1>
+        <img class="img" src="../assets/img/smile-emoji.svg" alt="project image">
+    </section>
+
+    <!-- <div class="progress">
+        <div class="progress-text">100%</div>
+        <div class="progress-ani">
+            <div class="loading">
+                <div class="load">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="load">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="load">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+    <script>
+        //로딩이후 실행
+        function loading() {
+            const progress = $(".progress"),
+                progressText = progress.find(".progress-text");
+
+            let imgLoad = imagesLoaded("body"),
+                imgTotal = imgLoad.images.length,
+                imgLoaded = 0,
+                imgCurrent = 0,
+                progressTimer = setInterval(updateProgress, 500 / 60);
+
+            imgLoad.on("progress", function () {
+                imgLoaded++;
+            })
+
+            function updateProgress() {
+                let target = (imgLoaded / imgTotal) * 100;
+
+                imgCurrent += (target - imgCurrent) * 0.1;
+                progressText.text(Math.floor(imgCurrent) + "%");
+
+                if (imgCurrent >= 100) {
+                    clearInterval(progressTimer)
+                    progress.delay(1000).fadeOut(1000)
+                    setTimeout(function () {
+                        //2초후 등장 애니메이션
+                        let tl = gsap.timeline();
+                        tl.to(".section h1", { opacity: 1, scale: 1, duration: .5, ease: "elastic.out(1.35, 0.75)" })
+                        tl.to(".section .img", { opacity: 1, scale: 1, duration: .5, ease: "elastic.out(1.35, 0.75)" }, "-=0.1")
+                    }, 2200);
+                }
+                if (imgCurrent > 99) {
+                    imgCurrent = 100;
+                }
+            }
+        }
+        loading();
+    </script>
+</body>
+
+</html>
