@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript__parallaxEffect02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        h2,
+        p {
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+        }
+
+        main,
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        main {
+            color: #F3EEE8;
+            background-color: #88B2C4;
+        }
+
+        main h1 {
+            font-size: 42px;
+        }
+
+        .section__1 {
+            color: #88B2C4;
+            background-color: #F3EEE8;
+        }
+
+        .section__2 {
+            color: #F3EEE8;
+            background-color: #88B2C4;
+        }
+
+        .section__3 {
+            color: #88B2C4;
+            background-color: #F3EEE8;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 48px;
+            text-align: center;
+        }
+
+        .section p {
+            width: 50vw;
+            font-size: 18px;
+            text-align: justify;
+            word-break: break-all;
+        }
+
+        .section .elem__1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .section h2,
+        .section .elem__1,
+        .section .elem__2 {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <main>
+        <h1>
+            javascript parallaxEffect
+        </h1>
+    </main>
+    <section class="section section__1">
+        <h2 class="elem">javascript parallaxEffect 1</h2>
+        <p class="elem elem__1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, magnam!</p>
+        <p class="elem elem__2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo cumque eos deserunt
+            explicabo
+            aliquam.
+            Repellendus, atque aliquid perspiciatis veritatis nostrum, mollitia, quas labore dolore nisi ad asperiores
+            repellat recusandae. In neque perspiciatis eaque earum ipsa nostrum voluptatibus provident quod voluptatem
+            quae! Expedita officiis cupiditate minima amet totam dolor error ipsum!
+        </p>
+    </section>
+    <section class="section section__2">
+        <h2 class="elem">javascript parallaxEffect 2</h2>
+        <p class="elem elem__1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, magnam!</p>
+        <p class="elem elem__2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo cumque eos deserunt
+            explicabo
+            aliquam.
+            Repellendus, atque aliquid perspiciatis veritatis nostrum, mollitia, quas labore dolore nisi ad asperiores
+            repellat recusandae. In neque perspiciatis eaque earum ipsa nostrum voluptatibus provident quod voluptatem
+            quae! Expedita officiis cupiditate minima amet totam dolor error ipsum!
+        </p>
+    </section>
+    <section class="section section__3">
+        <h2 class="elem">javascript parallaxEffect 3</h2>
+        <p class="elem elem__1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, magnam!</p>
+        <p class="elem elem__2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo cumque eos deserunt
+            explicabo
+            aliquam.
+            Repellendus, atque aliquid perspiciatis veritatis nostrum, mollitia, quas labore dolore nisi ad asperiores
+            repellat recusandae. In neque perspiciatis eaque earum ipsa nostrum voluptatibus provident quod voluptatem
+            quae! Expedita officiis cupiditate minima amet totam dolor error ipsum!
+        </p>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script>
+        parallax();
+
+        function parallax() {
+            window.addEventListener("scroll", function () {
+                // pageYOffset : window.scrollY의 다른 이름. window 안의 Documnet가 수직 방향으로 스크롤 된 거리를 픽셀 단위. 이때 출력되는 숫자는 정수가 아니다. 
+                let scroll = window.pageYOffset;
+                let pageYOffset = window.pageYOffset + screen.height / 3;
+
+                if (pageYOffset > document.querySelector(".section__1").offsetTop) {
+                    gsap.to(".section__1 h2", { duration: 1, opacity: 1, y: 0 })
+                    gsap.to(".section__1 .elem", { duration: 1, opacity: 1, y: 0, stagger: .06 })
+                }
+
+                if (pageYOffset > document.querySelector(".section__2").offsetTop) {
+                    gsap.to(".section__2 h2", { duration: 1, opacity: 1, y: 0 })
+                    gsap.to(".section__2 .elem", { duration: 1, opacity: 1, y: 0, stagger: .06 })
+                }
+
+                if (pageYOffset > document.querySelector(".section__3").offsetTop) {
+                    gsap.to(".section__3 h2", { duration: 1, opacity: 1, y: 0 })
+                    gsap.to(".section__3 .elem", { duration: 1, opacity: 1, y: 0, stagger: .06 })
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
