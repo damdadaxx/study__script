@@ -1,0 +1,79 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #eee;
+}
+
+.container {
+  display: grid;
+  width: 320px;
+  height: 510px;
+  padding: 16px 14px;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(230, 230, 230, 1) 0%,
+    rgba(246, 246, 246, 1) 100%
+  );
+  box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1),
+    4px 4px 10px -8px rgba(0, 0, 0, 0.3);
+}
+
+input,
+button {
+  height: 70px;
+  color: #999;
+}
+
+input {
+  width: 100%;
+  padding-right: 20px;
+  border-radius: 30px;
+  font-size: 48px;
+  text-align: right;
+  border: none;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.button-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+  width: 70px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  border: 0;
+  outline: none;
+  font-size: 24px;
+  font-family: Helvetica;
+  font-weight: normal;
+  background: linear-gradient(
+    135deg,
+    rgba(230, 230, 230, 1) 0%,
+    rgba(246, 246, 246, 1) 100%
+  );
+  box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1),
+    4px 4px 10px -8px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(246, 246, 246, 1) 0%,
+    rgba(230, 230, 230, 1) 100%
+  );
+  box-shadow: 4px 4px 10px -8px rgba(0, 0, 0, 0.3),
+    -4px -4px 10px -8px rgba(255, 255, 255, 1);
+  opacity: 0.8;
+}
+
+.zero {
+  width: 140px;
+  border-radius: 50px;
+  grid-column: 1/3;
+}

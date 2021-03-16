@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Multiplication Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset */
+        body,
+        h1,
+        p,
+        table,
+        tbody,
+        tr,
+        td {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            background-color: rgb(0, 74, 111);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        p {
+            width: 70vw;
+            text-align: justify;
+            word-break: break-all;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 70vw;
+            height: 55vh;
+            border-radius: 10px;
+            color: rgb(0, 74, 111);
+            background-color: #fff;
+        }
+
+        table tbody {
+            width: 100%;
+        }
+
+        table tr {
+            display: flex;
+            flex-direction: row;
+        }
+
+        table tr td {
+            width: 25%;
+            text-align: center;
+            letter-spacing: .1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Javascript Multiplication Table</h1>
+    <p>
+        구구단을 구출력해보자.
+        첫 줄에는 2~5단을 출력하고, 두 번째 줄에는 6~9단을 출력한다.
+        단, 4의 배수는 출력하지 않는다.
+    </p>
+
+    <script>
+        document.write("<table>");
+        document.write("<tr>");
+        for (i = 2; i <= 5; i++) {
+            document.write("<td>");
+            for (k = 2; k <= 9; k++) {
+                if (k === 4) {
+                    k === null;
+                } else {
+                    document.write(i + "*" + k + "=" + (i * k));
+                    document.write("<br />");
+                }
+            }
+            document.write("</td>");
+        }
+        document.write("</tr>");
+
+        document.write("<tr>");
+        for (i = 6; i <= 9; i++) {
+            document.write("<td>");
+            document.write("<br />");
+            for (k = 2; k <= 9; k++) {
+                if (k === 4) {
+                    k === null;
+                } else {
+                    document.write(i + "*" + k + "=" + (i * k));
+                    document.write("<br />");
+                }
+            }
+            document.write("</td>");
+        }
+        document.write("</tr>");
+        document.write("</table>");
+
+    </script>
+
+</body>
+
+</html>
