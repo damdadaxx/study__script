@@ -10,6 +10,7 @@ body {
   display: grid;
   width: 320px;
   height: 510px;
+  margin: 50px 0;
   padding: 16px 14px;
   border-radius: 30px;
   background: linear-gradient(

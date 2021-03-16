@@ -16,6 +16,32 @@
             font-style: normal;
         }
 
+        /* Scrollbar Custom */
+        /* 스크롤바의 width */
+        body::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* 스크롤바의 전체 배경색 */
+        body::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        /* 스크롤바 색 */
+        body::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background-color: gray;
+        }
+
+        /* 위 아래 버튼 (버튼 없애기를 함) */
+        body::-webkit-scrollbar-button {
+            width: 0;
+            height: 0;
+        }
+
         *,
         *::before,
         *::after {

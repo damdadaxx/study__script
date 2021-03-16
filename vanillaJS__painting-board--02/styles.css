@@ -1,70 +1,73 @@
 @import "reset.css";
 body {
-    width: 100%; height: 100vh;
-    background-color: #f6f9fc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 0px;
-    box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-color: #f6f9fc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px;
+  box-sizing: border-box;
 }
 
 .canvas {
-    /* width: 700px;
+  /* width: 700px;
     height: 700px; */
-    width: 70vh;
-    height: 50vh;
-    border-radius: 15px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  width: 70vh;
+  height: 50vh;
+  min-width: 400px;
+  min-height: 300px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
 .controls .controls__btns {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .controls__btns button {
-    all: unset;
-    width: 80px;
-    padding: 5px 0; 
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.7);
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  all: unset;
+  width: 80px;
+  padding: 5px 0;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .controls__btns button:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .controls .controls__colors {
-    display: flex;
+  display: flex;
 }
 
 .controls__colors .controls__color {
-    width: 3.5vw;
-    height: 3.5vw;
-    min-width: 30px;
-    min-height: 30px;
-    margin-bottom: 50px;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    cursor: pointer;
+  width: 3.5vw;
+  height: 3.5vw;
+  min-width: 30px;
+  min-height: 30px;
+  margin-bottom: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
 .controls .controls__range {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
